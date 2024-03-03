@@ -1,0 +1,38 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.7.1'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    // Add any dependencies here if needed
+}
+
+tasks.named('test', Test) {
+    useJUnitPlatform()
+}
+
+
+sourceSets {
+    main {
+        java {
+            srcDirs 'src/main/eddie/cronparser'
+        }
+    }
+    test {
+        java {
+            srcDirs 'src/test/eddie/cronparser'
+        }
+    }
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'CronParser'
+    }
+
+}
